@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDED - Kaduna State Empowerment Network</title>
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="header-title">KADUNA STATE MX PS EMPOWERMENT AND DELIVERY NETWORK (KDED)</h1>
+        <p id="header-subtitle">Empowering Local Vendors • Secure Pi Payments • Fast Delivery</p>
+    </header>
+
+    <div class="lang-select">
+        <select id="language" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="ha">Hausa</option>
+            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
+            <option value="yo">Yorùbá</option>
+            <option value="ig">Igbo</option>
+        </select>
+    </div>
+
+    <nav class="nav">
+        <button onclick="showSection('marketplace')" class="active" id="nav-market">Marketplace</button>
+        <button onclick="showSection('vendors')" id="nav-vendors">Vendors</button>
+        <button onclick="showSection('adverts')" id="nav-adverts">Adverts</button>
+        <button onclick="showSection('admin')" id="nav-admin">Admin</button>
+        <button onclick="showSection('profile')" id="nav-profile">Profile</button>
+    </nav>
+
+    <div class="container">
+        <!-- Marketplace -->
+        <div id="marketplace" class="section">
+            <h2 id="market-title">🛒 Marketplace</h2>
+            
+            <!-- Categories -->
+            <div class="category-filter">
+                <button onclick="filterByCategory('all')" class="cat-btn active" id="cat-all">All</button>
+                <button onclick="filterByCategory('Business')" class="cat-btn" id="cat-Business">Business</button>
+                <button onclick="filterByCategory('Career')" class="cat-btn" id="cat-Career">Career</button>
+                <button onclick="filterByCategory('Education')" class="cat-btn" id="cat-Education">Education</button>
+                <button onclick="filterByCategory('Entertainment')" class="cat-btn" id="cat-Entertainment">Entertainment</button>
+                <button onclick="filterByCategory('Finance')" class="cat-btn" id="cat-Finance">Finance</button>
+                <button onclick="filterByCategory('FoodDrink')" class="cat-btn" id="cat-FoodDrink">Food & Drink</button>
+                <button onclick="filterByCategory('Games')" class="cat-btn" id="cat-Games">Games</button>
+                <button onclick="filterByCategory('Health')" class="cat-btn" id="cat-Health">Health & Fitness</button>
+                <button onclick="filterByCategory('Lifestyle')" class="cat-btn" id="cat-Lifestyle">Lifestyle</button>
+                <button onclick="filterByCategory('Music')" class="cat-btn" id="cat-Music">Music</button>
+                <button onclick="filterByCategory('Productivity')" class="cat-btn" id="cat-Productivity">Productivity</button>
+                <button onclick="filterByCategory('Shopping')" class="cat-btn" id="cat-Shopping">Shopping</button>
+                <button onclick="filterByCategory('Social')" class="cat-btn" id="cat-Social">Social</button>
+                <button onclick="filterByCategory('Sports')" class="cat-btn" id="cat-Sports">Sports</button>
+                <button onclick="filterByCategory('Travel')" class="cat-btn" id="cat-Travel">Travel</button>
+                <button onclick="filterByCategory('Utilities')" class="cat-btn" id="cat-Utilities">Utilities</button>
+            </div>
+
+            <div class="product-grid" id="products"></div>
+        </div>
+
+        <!-- Vendors -->
+        <div id="vendors" class="section" style="display:none;">
+            <h2 id="vendors-title">👤 Vendor Dashboard</h2>
+            <button onclick="uploadAdvert()" class="big-btn" id="upload-btn">📸 Upload Advert (Photos/Videos)</button>
+            <input type="file" id="mediaUpload" multiple accept="image/*,video/*" style="display:none;">
+            <div id="vendor-status"></div>
+        </div>
+
+        <!-- Adverts -->
+        <div id="adverts" class="section" style="display:none;">
+            <h2 id="adverts-title">📣 Featured Adverts</h2>
+            <div id="adverts-list"></div>
+        </div>
+
+        <!-- Admin -->
+        <div id="admin" class="section" style="display:none;">
+            <h2 id="admin-title">🛠️ Admin Dashboard - Approve Adverts</h2>
+            <div id="pending-adverts"></div>
+        </div>
+
+        <!-- Profile -->
+        <div id="profile" class="section" style="display:none;">
+            <h2 id="profile-title">👤 Profile</h2>
+            <div id="user-info"></div>
+            <button onclick="authenticateWithPi()" class="big-btn" id="login-btn">🔑 Login with Pi</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
