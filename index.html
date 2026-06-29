@@ -9,35 +9,34 @@
 </head>
 <body>
     <header>
-        <h1 id="header-title">KADUNA STATE MX PS EMPOWERMENT AND DELIVERY NETWORK (KDED)</h1>
-        <p id="header-subtitle">Empowering Local Vendors • Secure Pi Payments • Fast Delivery</p>
+        <button onclick="toggleMenu()" class="hamburger" id="hamburger-btn">☰</button>
+        <h1 id="header-title" style="flex:1; text-align:center; margin:0;">KDED</h1>
+        <div class="lang-select">
+            <select id="language" onchange="changeLanguage()">
+                <option value="en">EN</option>
+                <option value="ha">HA</option>
+                <option value="fr">FR</option>
+                <option value="ar">AR</option>
+                <option value="yo">YO</option>
+                <option value="ig">IG</option>
+            </select>
+        </div>
     </header>
 
-    <div class="lang-select">
-        <select id="language" onchange="changeLanguage()">
-            <option value="en">English</option>
-            <option value="ha">Hausa</option>
-            <option value="fr">Français</option>
-            <option value="ar">العربية</option>
-            <option value="yo">Yorùbá</option>
-            <option value="ig">Igbo</option>
-        </select>
+    <!-- Side Menu -->
+    <div id="side-menu" class="side-menu">
+        <button onclick="toggleMenu()" class="close-btn">✕</button>
+        <button onclick="navigateTo('marketplace');toggleMenu()" id="nav-market">Marketplace</button>
+        <button onclick="navigateTo('vendors');toggleMenu()" id="nav-vendors">Vendors</button>
+        <button onclick="navigateTo('adverts');toggleMenu()" id="nav-adverts">Adverts</button>
+        <button onclick="navigateTo('profile');toggleMenu()" id="nav-profile">Profile</button>
+        <button onclick="navigateTo('admin');toggleMenu()" id="nav-admin" style="display:none;">Admin Dashboard</button>
     </div>
-
-    <nav class="nav">
-        <button onclick="showSection('marketplace')" class="active" id="nav-market">Marketplace</button>
-        <button onclick="showSection('vendors')" id="nav-vendors">Vendors</button>
-        <button onclick="showSection('adverts')" id="nav-adverts">Adverts</button>
-        <button onclick="showSection('admin')" id="nav-admin">Admin</button>
-        <button onclick="showSection('profile')" id="nav-profile">Profile</button>
-    </nav>
 
     <div class="container">
         <!-- Marketplace -->
         <div id="marketplace" class="section">
             <h2 id="market-title">🛒 Marketplace</h2>
-            
-            <!-- Categories -->
             <div class="category-filter">
                 <button onclick="filterByCategory('all')" class="cat-btn active" id="cat-all">All</button>
                 <button onclick="filterByCategory('Business')" class="cat-btn" id="cat-Business">Business</button>
@@ -57,15 +56,18 @@
                 <button onclick="filterByCategory('Travel')" class="cat-btn" id="cat-Travel">Travel</button>
                 <button onclick="filterByCategory('Utilities')" class="cat-btn" id="cat-Utilities">Utilities</button>
             </div>
-
             <div class="product-grid" id="products"></div>
         </div>
 
         <!-- Vendors -->
         <div id="vendors" class="section" style="display:none;">
             <h2 id="vendors-title">👤 Vendor Dashboard</h2>
-            <button onclick="uploadAdvert()" class="big-btn" id="upload-btn">📸 Upload Advert (Photos/Videos)</button>
-            <input type="file" id="mediaUpload" multiple accept="image/*,video/*" style="display:none;">
+            <div class="upload-area" id="upload-area">
+                <p>📸 Drag & Drop or Click to Upload Photos/Videos (Max 50MB)</p>
+                <input type="file" id="mediaUpload" multiple accept="image/*,video/*" style="display:none;">
+                <button onclick="triggerUpload()" class="big-btn" id="upload-btn">Select Media</button>
+            </div>
+            <div id="upload-preview"></div>
             <div id="vendor-status"></div>
         </div>
 
